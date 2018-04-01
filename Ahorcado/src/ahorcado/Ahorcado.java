@@ -16,6 +16,8 @@ public class Ahorcado {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Diccionario dic = new Diccionario();
+        dic.pedirPalabra();
     }
     
 }
