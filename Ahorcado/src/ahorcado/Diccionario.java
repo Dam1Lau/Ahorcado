@@ -14,6 +14,7 @@ import java.util.Scanner;
 public class Diccionario {
 
     private String nombre;
+    private String dificultad;
     private String[] palabras;
 
     public Diccionario() {
@@ -23,6 +24,12 @@ public class Diccionario {
         nombre = lector.nextLine();
         palabras = new String[20];
     }
+
+    public Diccionario(String dificultad) {
+        this();
+        this.dificultad = dificultad;
+    }
+    
 
     public String getNombre() {
         return nombre;
@@ -49,6 +56,40 @@ public class Diccionario {
         }
         System.out.println("=================================================");
     }
+//////////////////ESTE DEVUELVE UN INPUT MISMATCH AL METER UNA LETRA! CARNE DE EXCEPTION
+    public void actualizarDiccionario() {
+        int opcion = 0;
+        Scanner lector = new Scanner(System.in);
+        while (opcion != 3) {
+            System.out.println("\n======*** Actualizar Diccionario " + nombre + " ***======");
+            System.out.println("Opciones: \n1. Añadir una palabra al diconario. \n2. Borrar una palabra del diccionario. \n3. Salir.");
+
+            opcion = lector.nextInt();
+            switch (opcion) {
+                case 1:
+                    System.out.println("*** Añadir palabra nueva: ***");
+                    if (meterPalabra(pedirPalabra())) {
+                        System.out.println("Se ha introducido la palabra correctamente.");
+                    } else {
+                        System.out.println("--- ¡ No se ha podido añadir la palabra !  ---");
+                    }
+                    break;
+                case 2:
+                    System.out.println("*** Borrar palabra: ***");
+                    if (borrarPalabra(pedirPalabra())) {
+                        System.out.println("Se ha borrado la palabra correctamente.");
+                    } else {
+                        System.out.println("--  No se ha podido borrar la palabra o no existe en el diccionario.  --");
+                    }
+                    break;
+                case 3:
+                    break;
+                default:
+                    System.out.println("Número incorrecto. Opciones válidas = 1, 2 ó 3.");
+//                    throw new AssertionError();
+            }
+        }
+    }
 
     public boolean meterPalabra(String palabra) {
         boolean hecho = false;
@@ -66,7 +107,7 @@ public class Diccionario {
     public boolean borrarPalabra(String palabra) {
         boolean hecho = false;
         for (int i = 0; i < palabras.length && hecho == false; i++) {
-            if (palabras[i].equalsIgnoreCase(palabra)) {
+            if (palabras[i] != null && palabras[i].equalsIgnoreCase(palabra)) {
                 palabras[i] = null;
                 hecho = true;
             } else {
@@ -98,4 +139,45 @@ public class Diccionario {
         return palabra;
     }
 
+    public void menuDiccionario(){
+        int opcion = 0;
+        Scanner lector = new Scanner(System.in);
+        while (opcion != 3) {
+            System.out.println("\n======*** Actualizar Diccionario " + nombre + " ***======");
+            System.out.println("Opciones: \n1. Añadir una palabra al diconario. \n2. Borrar una palabra del diccionario. \n3. Salir.");
+
+            opcion = lector.nextInt();
+            switch (opcion) {
+                case 1:
+                    System.out.println("*** Añadir palabra nueva: ***");
+                    if (meterPalabra(pedirPalabra())) {
+                        System.out.println("Se ha introducido la palabra correctamente.");
+                    } else {
+                        System.out.println("--- ¡ No se ha podido añadir la palabra !  ---");
+                    }
+                    break;
+                case 2:
+                    System.out.println("*** Borrar palabra: ***");
+                    if (borrarPalabra(pedirPalabra())) {
+                        System.out.println("Se ha borrado la palabra correctamente.");
+                    } else {
+                        System.out.println("--  No se ha podido borrar la palabra o no existe en el diccionario.  --");
+                    }
+                    break;
+                case 3:
+                    break;
+                default:
+                    System.out.println("Número incorrecto. Opciones válidas = 1, 2 ó 3.");
+//                    throw new AssertionError();
+            }
+        }
+    
+    }
+
+    @Override
+    public String toString() {
+        return "Diccionario " + nombre + ", dificultad: " + dificultad ;
+    }
+    
+    
 }
