@@ -15,7 +15,7 @@ public class Jugador {
 
     public Jugador() {
         nombre = "Por Defecto";
-        vidas = 5;
+        vidas = 7;
     }
 
     public Jugador(String nombre, int vidas) {

@@ -27,7 +27,7 @@ public class GestorDiccionario {
     public Diccionario[] getDiccionarios() {
         return diccionarios;
     }
-
+////////////////// INPUT MISMATCH INT
     public void menu() {
         int opcion;
         Scanner lector = new Scanner(System.in);
@@ -70,6 +70,9 @@ public class GestorDiccionario {
 
     }
     
+    
+    
+    /////////////////////////// EXCEPTION MISMATCH INT (Este es el que pide en el enunciado LeeEntero de la clase Teclado)
     public int pedirnumero(){
     int numero;
         Scanner lector = new Scanner(System.in);

@@ -29,6 +29,11 @@ public class Diccionario {
         this();
         this.dificultad = dificultad;
     }
+
+    public Diccionario(String[] palabras) {
+        this();
+        this.palabras = palabras;
+    }
     
 
     public String getNombre() {
@@ -57,6 +62,7 @@ public class Diccionario {
         System.out.println("=================================================");
     }
 //////////////////ESTE DEVUELVE UN INPUT MISMATCH AL METER UNA LETRA! CARNE DE EXCEPTION
+
     public void actualizarDiccionario() {
         int opcion = 0;
         Scanner lector = new Scanner(System.in);
@@ -139,7 +145,11 @@ public class Diccionario {
         return palabra;
     }
 
-    public void menuDiccionario(){
+    public String buscarPalabra(int posicion) {
+        return palabras[posicion];
+    }
+
+    public void menuDiccionario() {
         int opcion = 0;
         Scanner lector = new Scanner(System.in);
         while (opcion != 3) {
@@ -171,13 +181,12 @@ public class Diccionario {
 //                    throw new AssertionError();
             }
         }
-    
+
     }
 
     @Override
     public String toString() {
-        return "Diccionario " + nombre + ", dificultad: " + dificultad ;
+        return "Diccionario " + nombre + ", dificultad: " + dificultad;
     }
-    
-    
+
 }
