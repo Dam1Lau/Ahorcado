@@ -5,6 +5,8 @@
  */
 package ahorcado;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Laura
@@ -20,12 +22,19 @@ public class Ahorcado {
 //        gest.menu();
         
         Jugador jug = new Jugador();
-        Diccionario dic = new Diccionario(new String[]{"Hola","Adios","Arriba","Abajo","Derecha","Es muy random", "Jeje"});
+        Diccionario dic = new Diccionario(new String[]{"Hola","Adios","Arriba","Abajo","Derecha","es muy random", "jeje"});
         JuegoAhorcado test =  JuegoAhorcado.getJuego();
         
-        for (int i = 20; i >= 0; i--) {
-            System.out.println(test.obtenerPalabraRandom(dic));
-        }
+        test.Jugar(jug, dic);
+        
+        
+        Scanner lector = new Scanner(System.in);
+        int opcion;
+        
+        
+        
+        
+        
         
     }
     

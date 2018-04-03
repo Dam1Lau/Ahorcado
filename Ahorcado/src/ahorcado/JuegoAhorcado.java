@@ -43,6 +43,7 @@ public class JuegoAhorcado {
         return diccionario.buscarPalabra(random);
     }
 //////////////// Aqui puede meter un numero y no se contaria como fallo. ¿Como solucionarlo? Excepcion? Filtrar aqui?
+
     public char pedirLetra() {
         char letra;
         Scanner lector = new Scanner(System.in);
@@ -51,19 +52,51 @@ public class JuegoAhorcado {
         return letra;
     }
 
+    public boolean analizarRespuesta(char[] respuesta) {
+        boolean acertada = false;
+        int parar = 0;
+        for (int i = 0; i < respuesta.length && parar == 0; i++) {
+            if (respuesta[i] == '-') {
+                acertada = false;
+                parar = 1;
+            } else {
+                acertada = true;
+            }
+        }
+        return acertada;
+    }
+
     public void Jugar(Jugador jugador, Diccionario diccionario) {
-        String palabra = obtenerPalabraRandom(diccionario);
+        String palabra = obtenerPalabraRandom(diccionario).toLowerCase();
         char[] respuesta = new char[palabra.length()];
         char letraComparar;
-        boolean acertada = false;
+        boolean acertado;
         for (int i = 0; i < respuesta.length; i++) {
             respuesta[i] = '-';
         }
-        while (jugador.getVidas() > 0 && acertada == false) {
+        while (jugador.getVidas() > 0 && !analizarRespuesta(respuesta)) {
             letraComparar = pedirLetra();
+            acertado = false;
             for (int i = 0; i < palabra.length(); i++) {
-                if(palabra.charAt(i) == letraComparar){
+                if (palabra.charAt(i) == letraComparar) {
                     respuesta[i] = letraComparar;
+                    acertado = true;
+                }
+            }
+            if (acertado == true) {
+                pintarAhorcado(jugador);
+                System.out.println("Bien hecho. Esa letra está en la palabra~ \nPALABRA: ");
+                for (int i = 0; i < respuesta.length; i++) {
+                    System.out.print(respuesta[i]);
+                }
+                System.out.println("\n=================");
+            } else {
+                jugador.setVidas(jugador.getVidas() - 1);
+                pintarAhorcado(jugador);
+                System.out.println("Has fallado. Te quedan " + jugador.getVidas() + " vidas");
+                System.out.println("PALABRA: ");
+                for (int i = 0; i < respuesta.length; i++) {
+                    System.out.print(respuesta[i]);
                 }
             }
         }
@@ -78,7 +111,6 @@ public class JuegoAhorcado {
             System.out.println(" ");
             System.out.println(" ");
             System.out.println("_|_ ");
-            System.out.println("Nop! Aun te quedan oportunidades.");
         } else if (jugador.getVidas() == 5) {
             System.out.println("  ");
             System.out.println(" |");
@@ -87,7 +119,6 @@ public class JuegoAhorcado {
             System.out.println(" |");
             System.out.println(" |");
             System.out.println("_|_ ");
-            System.out.println("No has acertado. ¡Prueba de nuevo!");
         } else if (jugador.getVidas() == 4) {
             System.out.println(" _______ ");
             System.out.println(" |     |");
@@ -96,7 +127,6 @@ public class JuegoAhorcado {
             System.out.println(" |");
             System.out.println(" |");
             System.out.println("_|_ ");
-            System.out.println("No has acertado. ¡Prueba de nuevo!");
         } else if (jugador.getVidas() == 3) {
             System.out.println(" _______ ");
             System.out.println(" |     |");
@@ -105,7 +135,6 @@ public class JuegoAhorcado {
             System.out.println(" | ");
             System.out.println(" | ");
             System.out.println("_|_ ");
-            System.out.println("No has acertado. ¡Prueba de nuevo!");
         } else if (jugador.getVidas() == 2) {
             System.out.println(" _______ ");
             System.out.println(" |     |");
@@ -114,7 +143,6 @@ public class JuegoAhorcado {
             System.out.println(" |");
             System.out.println(" |");
             System.out.println("_|_ ");
-            System.out.println("No has acertado. ¡Prueba de nuevo!");
         } else if (jugador.getVidas() == 1) {
             System.out.println(" _______ ");
             System.out.println(" |     |");
@@ -123,7 +151,6 @@ public class JuegoAhorcado {
             System.out.println(" |     |");
             System.out.println(" |");
             System.out.println("_|_ ");
-            System.out.println("OH NO! Última oportunidad~");
         } else {
             System.out.println(" _______ ");
             System.out.println(" |     |");
