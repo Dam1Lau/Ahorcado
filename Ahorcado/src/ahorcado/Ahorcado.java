@@ -13,9 +13,14 @@ import java.util.Scanner;
  */
 public class Ahorcado {
 
-    /**
-     * @param args the command line arguments
-     */
+    public static void menuPrincipal(){
+        Scanner lector = new Scanner(System.in);
+        int opcion;
+        System.out.println("******************* INICIAR JUEGO *******************");
+        System.out.println("");
+    
+    }
+    
     public static void main(String[] args) {
         // TODO code application logic here
 //        GestorDiccionario gest = new GestorDiccionario();
@@ -28,8 +33,7 @@ public class Ahorcado {
         test.Jugar(jug, dic);
         
         
-        Scanner lector = new Scanner(System.in);
-        int opcion;
+        
         
         
         
