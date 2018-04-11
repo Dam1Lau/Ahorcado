@@ -100,6 +100,7 @@ public class JuegoAhorcado {
                 }
             }
         }
+        System.out.println("\nLa palabra era: " + palabra);
     }
 
     public void pintarAhorcado(Jugador jugador) {
@@ -160,6 +161,7 @@ public class JuegoAhorcado {
             System.out.println(" |    / \\");
             System.out.println("_|_ ");
             System.out.println("******* RIP *******");
+            
         }
 
     }
