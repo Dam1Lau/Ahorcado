@@ -45,4 +45,12 @@ public class Utilidades {
         return numero;
     }
 
+    
+    // APUNTES:
+    /*
+        1. En la parte de meter una palabra, en vez de comprobar todas las entradas
+           crear una exception en la que si no cumple eso salte el mensaje.
+    
+    */
+    
 }

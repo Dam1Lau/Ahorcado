@@ -18,20 +18,23 @@ public class Diccionario {
     private String[] palabras;
 
     public Diccionario() {
-
-        System.out.println("Pon un nombre al diccionario y que sea repersentativo de las palabras que contendrá (EJ: Frutas)");
-        Scanner lector = new Scanner(System.in);
-        nombre = lector.nextLine();
         palabras = new String[20];
     }
+    
 
-    public Diccionario(String dificultad) {
+    public Diccionario(String nombre, String dificultad) {
         this();
         this.dificultad = dificultad;
     }
 
     public Diccionario(String[] palabras) {
         this();
+        this.palabras = palabras;
+    }
+
+    public Diccionario(String nombre, String dificultad, String[] palabras) {
+        this.nombre = nombre;
+        this.dificultad = dificultad;
         this.palabras = palabras;
     }
     
@@ -61,7 +64,7 @@ public class Diccionario {
         }
         System.out.println("=================================================");
     }
-//////////////////ESTE DEVUELVE UN INPUT MISMATCH AL METER UNA LETRA! CARNE DE EXCEPTION
+
 
     public void actualizarDiccionario() {
         int opcion = 0;
@@ -70,7 +73,7 @@ public class Diccionario {
             System.out.println("\n======*** Actualizar Diccionario " + nombre + " ***======");
             System.out.println("Opciones: \n1. Añadir una palabra al diconario. \n2. Borrar una palabra del diccionario. \n3. Salir.");
 
-            opcion = lector.nextInt();
+            opcion = Utilidades.pedirNumero();
             switch (opcion) {
                 case 1:
                     System.out.println("*** Añadir palabra nueva: ***");
@@ -122,7 +125,7 @@ public class Diccionario {
         }
         return hecho;
     }
-
+// Aqui no debo permitir que introduzca ningun numero!! HOW
     public String pedirPalabra() {
         String palabra;
         boolean numeroDetectado;
@@ -156,7 +159,7 @@ public class Diccionario {
             System.out.println("\n======*** Actualizar Diccionario " + nombre + " ***======");
             System.out.println("Opciones: \n1. Añadir una palabra al diconario. \n2. Borrar una palabra del diccionario. \n3. Salir.");
 
-            opcion = lector.nextInt();
+            opcion = Utilidades.pedirNumero();
             switch (opcion) {
                 case 1:
                     System.out.println("*** Añadir palabra nueva: ***");

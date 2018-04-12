@@ -20,13 +20,17 @@ public class GestorDiccionario {
     public GestorDiccionario() {
         this.pass = 1775;
         diccionarios = new Diccionario[3];
-        diccionarios[0] = new Diccionario("Facil");
-        diccionarios[1] = new Diccionario("Medio");
-        diccionarios[2] = new Diccionario("Dificil");
+        diccionarios[0] = new Diccionario("Frutas","Facil");
+        diccionarios[1] = new Diccionario("Astronomia","Medio");
+        diccionarios[2] = new Diccionario("Peliculas","Dificil");
     }
 
     public Diccionario[] getDiccionarios() {
         return diccionarios;
+    }
+    
+    public Diccionario obtenerDiccionario(int numero){
+        return diccionarios[numero];
     }
 
     public void menu() {
@@ -42,6 +46,8 @@ public class GestorDiccionario {
         do {
             System.out.println("Numero incorrecto. Elige entre uno de los tres diccionarios.");
             opcion = Utilidades.pedirNumero();
+            
+            
         } while (opcion < 1 | opcion > 3);
         
         switch (opcion) {
@@ -54,7 +60,7 @@ public class GestorDiccionario {
 
                 break;
             case 2:
-                if (pedirnumero() == 1) {
+                if (pedirnumero() == 2) {
                     diccionarios[1].menuDiccionario();
                 } else {
                     diccionarios[1].listarDiccionario();
@@ -62,10 +68,10 @@ public class GestorDiccionario {
 
                 break;
             case 3:
-                if (pedirnumero() == 1) {
-                    diccionarios[3].menuDiccionario();
+                if (pedirnumero() == 3) {
+                    diccionarios[2].menuDiccionario();
                 } else {
-                    diccionarios[3].listarDiccionario();
+                    diccionarios[2].listarDiccionario();
                 }
 
                 break;
