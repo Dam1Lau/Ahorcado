@@ -20,9 +20,9 @@ public class GestorDiccionario {
     public GestorDiccionario() {
         this.pass = 1775;
         diccionarios = new Diccionario[3];
-        diccionarios[0] = new Diccionario("Frutas","Facil");
-        diccionarios[1] = new Diccionario("Astronomia","Medio");
-        diccionarios[2] = new Diccionario("Peliculas","Dificil");
+        diccionarios[0] = new Diccionario("Frutas","Facil", new String[]{"naranja", "Fresa", "Uva", "Manzana", "Pera", "Melon", "Sandia", "Melocoton", "Kiwi"});
+        diccionarios[1] = new Diccionario("Astronomia","Medio", new String[]{"Venus", "Marte","Estrella", "Planeta", "Tierra", "Mercurio", "Jupiter", "Saturno", "Urano", "Neptuno", "Pluton" , "Ceres", "Eris", "Luna", "Asteroide", "Meteorito"});
+        diccionarios[2] = new Diccionario("Peliculas","Dificil",new String[]{"Up, Tiburon, Drive"});
     }
 
     public Diccionario[] getDiccionarios() {
