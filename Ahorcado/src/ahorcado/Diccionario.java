@@ -5,7 +5,14 @@
  */
 package ahorcado;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,6 +23,7 @@ public class Diccionario {
     private String nombre;
     private String dificultad;
     private String[] palabras;
+    private static final String nombreFichero = "fichero";
 
     public Diccionario() {
         palabras = new String[20];
@@ -65,6 +73,17 @@ public class Diccionario {
         System.out.println("=================================================");
     }
 
+    public void escribirFichero(String palabra){
+        try {
+            PrintWriter pw = new PrintWriter(new FileWriter(nombreFichero,true));
+            pw.println(palabra);
+            pw.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("Fichero no encontrado");
+        } catch (IOException ex) {
+            Logger.getLogger(Diccionario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public void actualizarDiccionario() {
         int opcion = 0;
