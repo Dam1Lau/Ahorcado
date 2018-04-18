@@ -33,14 +33,23 @@ public class JuegoAhorcado {
         return game;
     }
 
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        throw new CloneNotSupportedException();
-    }
 
     public String obtenerPalabraRandom(Diccionario diccionario) {
         int random = (int) (Math.random() * diccionario.getPalabras().length);
         return diccionario.buscarPalabra(random);
+    }
+    
+    public boolean comprobarPalabraRandom (String palabra) throws JuegoException{
+    boolean palabraSinNumeros = false;
+        for (int i = 0; i < palabra.length(); i++) {
+            if(palabra.charAt(i) >0 || palabra.charAt(i)<9 ){
+                palabraSinNumeros = false;
+                throw new JuegoException("La palabra contiene un número. No es válida.");
+            }else{
+                palabraSinNumeros = true;
+            }
+        }
+    return palabraSinNumeros;
     }
 //////////////// Aqui puede meter un numero y no se contaria como fallo. ¿Como solucionarlo? Excepcion? Filtrar aqui?
 
