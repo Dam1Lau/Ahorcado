@@ -14,18 +14,6 @@ import java.util.Scanner;
  */
 public class Utilidades {
 
-    public static int pedirUnoDos(int num) {
-        int numero = 0;
-        do {
-            numero = pedirNumero();
-            if (numero != 1 && numero != 2) {
-                System.out.println("Número no válido, introduce 1 o 2.");
-            }
-        } while (numero != 1 && numero != 2);
-
-        return numero;
-    }
-    
 
     public static int pedirNumero() {
         int numero = 0;
